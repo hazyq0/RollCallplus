@@ -42,4 +42,4 @@ We welcome contributions from the community to enhance RollCall+ further. If you
 Authors
 Author 1 :Amber Subhani
 Author 2 :Mohammad Taha Rizvi
-Author 3 :mohammad Haziqullah
+Author 3 :Mohd Haziqullah
