@@ -38,8 +38,6 @@ View and manage attendance records within the app.
 Contributing
 We welcome contributions from the community to enhance RollCall+ further. If you encounter any issues or have suggestions for improvements, please submit a pull request or open an issue on GitHub.
 
-License
-RollCall+ is open-source software licensed under the MIT License.
 
 Authors
 Author 1 :Amber Subhani
