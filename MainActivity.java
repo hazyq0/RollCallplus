@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.rollcall;
 
 import android.os.Bundle;
 import android.view.View;
@@ -14,7 +14,7 @@ import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.myapplication.databinding.ActivityMainBinding;
+import com.example.rollcall.databinding.ActivityMainBinding;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
