@@ -29,6 +29,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 
 public class MainActivity extends AppCompatActivity {
     private String scannedUrl = "";
@@ -65,9 +67,9 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
-        // Initialize and set OnClickListener for scanButton
-        Button scanButton = findViewById(R.id.button);
-        scanButton.setOnClickListener(new View.OnClickListener() {
+        // Change the scanning button to FAB (Floating Action Button)
+        FloatingActionButton fab = findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Initialize the Intent Integrator
