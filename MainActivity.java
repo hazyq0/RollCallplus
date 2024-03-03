@@ -24,8 +24,15 @@ import android.widget.Toast;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 import android.net.Uri;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.URL;
+import java.net.URLConnection;
 
 public class MainActivity extends AppCompatActivity {
+    private String scannedUrl = "";
+    private String name = "";
 
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainBinding binding;
@@ -81,19 +88,38 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(this, "Scan canceled", Toast.LENGTH_SHORT).show();
             } else {
                 String scannedText = result.getContents();
+                Toast.makeText(this, "Scanned URL: " + scannedUrl, Toast.LENGTH_SHORT).show();
                 // Handle the scanned QR code data (e.g., open a link)
-                openLink(scannedText);
+                try {
+                    name = extractNameFromWebsite(scannedUrl); // Extract website name
+                    System.out.println("Name of the website: " + name);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
             }
         } else {
             super.onActivityResult(requestCode, resultCode, data);
         }
     }
 
-    private void openLink(String url) {
-        Intent intent = new Intent(Intent.ACTION_VIEW);
-        intent.setData(Uri.parse(url));
-        startActivity(intent);
+    private String extractNameFromWebsite(String websiteUrl) throws IOException {
+        URL url = new URL(websiteUrl);
+        URLConnection connection = url.openConnection();
+        BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+
+        String firstLine = reader.readLine(); // Read the first line of the website
+        reader.close();
+
+        // Assuming the name is in the format "name xyz"
+        String[] parts = firstLine.split("\\s+");
+        if (parts.length > 1 && parts[0].equalsIgnoreCase("name")) {
+            return parts[1]; // Return the second part after "name"
+        } else {
+            return "Name not found";
+        }
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -108,4 +134,4 @@ public class MainActivity extends AppCompatActivity {
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }
-} f
+}
