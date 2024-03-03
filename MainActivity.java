@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
                 // Initialize the Intent Integrator
                 IntentIntegrator integrator = new IntentIntegrator(MainActivity.this);
                 integrator.setOrientationLocked(true); // Allow both portrait and landscape orientation
-                integrator.setPrompt("Scan a QR code"); // Set a custom prompt message
+                //integrator.setPrompt("Scan a QR code"); // Set a custom prompt message
                 integrator.setBeepEnabled(false); // Disable beep sound
                 integrator.initiateScan(); // Start QR code scanning
             }
@@ -112,7 +112,7 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(this, "Scan canceled", Toast.LENGTH_SHORT).show();
             } else {
                 scannedUrl = result.getContents(); // Assign scanned URL to scannedUrl
-                Toast.makeText(this, "Scanned URL: " + scannedUrl, Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Scan successful", Toast.LENGTH_SHORT).show();
                 // Handle the scanned QR code data (e.g., open a link)
                 try {
                     name = extractNameFromWebsite(scannedUrl); // Extract website name
@@ -125,8 +125,21 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    protected String extractNameFromWebsite(String scannedUrl) throws IOException {
-        return "hello";
+    private String extractNameFromWebsite(String websiteUrl) throws IOException {
+        URL url = new URL(websiteUrl);
+        URLConnection connection = url.openConnection();
+        BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+
+        String firstLine = reader.readLine(); // Read the first line of the website
+        reader.close();
+
+        // Assuming the name is in the format "name xyz"
+        String[] parts = firstLine.split("\\s+");
+        if (parts.length > 1 && parts[0].equalsIgnoreCase("name")) {
+            return parts[1]; // Return the second part after "name"
+        } else {
+            return "Name not found";
+        }
     }
 
     private void saveData() {
@@ -136,6 +149,16 @@ public class MainActivity extends AppCompatActivity {
         String jsonString = gson.toJson(items);
         editor.putString(SHARED_PREFS_KEY, jsonString);
         editor.apply();
+    }
+
+
+    // Increasing Attendence 
+    private void checkStudent(String name) {
+        for(int i = 0; i < items.size(); i++) {
+            if(name.equals(items.get(i))) {
+
+            }
+        }
     }
 
     private void loadData() {
