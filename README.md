@@ -2,16 +2,16 @@
 # RollCall+ #NoMoreProxies
 
 
-Description
+Description:
 RollCall+ is a smart attendance taker app designed to streamline the attendance process in educational institutions. Leveraging barcode scanning technology, RollCall+ allows users to efficiently record attendance by scanning the barcode present on the ID cards of students.
 
-Problem Statement
+Problem Statement:
 Traditional methods of taking attendance in educational institutions are often time-consuming, prone to errors, and lack efficiency. Manual attendance tracking methods such as paper-based registers or manual entry into digital systems are labor-intensive and can lead to inaccuracies. Additionally, these methods do not provide real-time insights into attendance data, making it challenging for educators to monitor student attendance patterns effectively.
 
-Solution
+Solution:
 RollCall+ addresses these challenges by providing a convenient and efficient solution for attendance tracking. By utilizing barcode scanning technology, the app automates the attendance-taking process, reducing the time and effort required to record attendance manually. The app ensures accuracy by directly linking attendance records to the unique barcode identifiers on students' ID cards.
 
-Features
+Features:
 Barcode scanning: Allows users to scan the barcode present on the ID cards of students to record attendance.
 Real-time data: Provides real-time insights into attendance data, allowing educators to monitor student attendance patterns effectively.
 User-friendly interface: Offers an intuitive and easy-to-use interface for seamless attendance management.
@@ -22,7 +22,7 @@ RollCall+ is developed using the following technologies:
 Android Studio: Integrated development environment (IDE) for Android app development.
 Java: Programming language used for developing Android applications.
 Barcode scanning library (e.g., ZXing): Library used for barcode scanning functionality.
-Installation
+Installation:
 To install RollCall+, follow these steps:
 
 Clone the repository to your local machine.
